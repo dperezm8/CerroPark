@@ -1,6 +1,6 @@
-const botonHamburguesa = document.getElementsByClassName('menuHamburguesa')[0]
-const opcionesMenu = document.getElementsByClassName('opcionesMenu')[0]
+const toggleButton = document.getElementsByClassName('menuHamburguesa')[0]
+const navbarLinks = document.getElementsByClassName('opcionesMenu')[0]
 
-botonHamburguesa.addEventListener('click', () => {
-    opcionesMenu.classList.toggle('active')
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
 })
