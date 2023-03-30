@@ -4,12 +4,12 @@
                     <img src="img/logos/escudoDiocesis.png" width="150px">
                 </div>
             </div>
-            <a href="#" class="menuHamburguesa">
+            <a href="#" class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </a>
-            <div class="opcionesMenu">
+            <div class="navbar-links">
                 <ul>
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Registro</a></li>
