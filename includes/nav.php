@@ -6,8 +6,11 @@
             </div>
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
+                <span class=""></span>
                 <span class="bar"></span>
+                <span class=""></span>
                 <span class="bar"></span>
+                <span class=""></span>
             </a>
             <div class="navbar-links">
                 <ul>
