@@ -18,7 +18,7 @@
             <div class="form-content">
                 <header>Login</header>
                 <form action="#">
-                    <div class="field input-field">
+                    <!-- <div class="field input-field">
                         <input type="email" placeholder="Email" class="input">
                     </div>
 
@@ -38,12 +38,14 @@
                         <span>Ya tienes una cuenta?<a>Signup</a></span>
                     </div>
 
-                    <div class="line"></div>
+                    <div class="line"></div> -->
 
                     <div class="media-options">
                         <a href="#" class="field google">
+                            
                             <img src="img/icons/googleIcon.png" alt="" class="google-img" >
-                            <span>Login with Google</span>
+                            <span>
+                            Login with Google</span>
                         </a>
                     </div>
                 </form>
