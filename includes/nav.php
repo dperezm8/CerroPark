@@ -15,9 +15,14 @@
             <div class="navbar-links">
                 <ul>
                     <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Registro</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Servicios</a></li>
+
+
+                    <li><a href="register.php">Registro</a></li>
+                    <li><a href="login.php">Login</a></li>
+
+
+                    <li><a href="#">Cerrar Sesion</a></li>
+                    <li><a href="#">Añadir coche</a></li>
                 </ul>
             </div>
         </nav>
