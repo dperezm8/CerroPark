@@ -16,7 +16,7 @@
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
-                <header>Login</header>
+                <header><strong>Log In</strong></header>
                 <form action="#">
                     <!-- <div class="field input-field">
                         <input type="email" placeholder="Email" class="input">
