@@ -37,6 +37,15 @@
                     <div class="form-link">
                         <span>Ya tienes una cuenta?<a>Signup</a></span>
                     </div>
+
+                    <div class="line"></div>
+
+                    <div class="media-options">
+                        <a href="#" class="field google">
+                            <img src="img/icons/googleIcon.png" alt="" class="google-img" >
+                            <span>Login with Google</span>
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
