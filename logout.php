@@ -2,10 +2,10 @@
 
 //logout.php
 
-include('config.php');
+include('php/login/config.php');
 
 //Reset OAuth access token
-$google_client->revokeToken();
+$clienteGoogle->revokeToken();
 
 //Destroy entire session data.
 session_destroy();

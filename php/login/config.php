@@ -9,13 +9,13 @@ $config = parse_ini_file('config.ini');
 //decalracion de variables ambientales
 $clientIDGoogleLogin = $config['clientID'];
 $clientSecretGoogleLogin = $config['clientSecret'];
-$redirectUriGoogleLogin =$config['redirectUri'];
+$redirectUriGoogleLogin = $config['redirectUri'];
 
 //Acceso a la API de Google medainte las credenciales
 $clienteGoogle = new Google_Client();
 
 //id del clienteGoogle
-$clienteGoogle -> setClientId($clientSecretGoogleLogin);
+$clienteGoogle -> setClientId($clientIDGoogleLogin);
 
 //secreto de clienteGoogle
 $clienteGoogle -> setClientSecret($clientSecretGoogleLogin);
