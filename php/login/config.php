@@ -12,19 +12,19 @@ $clientSecretGoogleLogin = $config['clientSecret'];
 $redirectUriGoogleLogin = $config['redirectUri'];
 
 //Acceso a la API de Google medainte las credenciales
-$clienteGoogle = new Google_Client();
+$client = new Google_Client();
 
-//id del clienteGoogle
-$clienteGoogle -> setClientId($clientIDGoogleLogin);
+//id del client
+$client -> setClientId($clientIDGoogleLogin);
 
-//secreto de clienteGoogle
-$clienteGoogle -> setClientSecret($clientSecretGoogleLogin);
+//secreto de client
+$client -> setClientSecret($clientSecretGoogleLogin);
 
 //URL de redireccion despues de hacer login
-$clienteGoogle -> setRedirectUri($redirectUriGoogleLogin);
+$client -> setRedirectUri($redirectUriGoogleLogin);
 
 //pedira del perfil el email, y el profile
-$clienteGoogle -> addScope("email");
-$clienteGoogle -> addScope("profile");
+$client -> addScope("email");
+$client -> addScope("profile");
 
 ?> 

@@ -1,7 +1,10 @@
 <?php
-require 'php/login/authen.php'
-?>
+require_once 'php/login/config.php'; //move this line up
+require_once 'php/login/authen.php';
 
+session_start(); //add this line
+
+?>
 <html lang="en">
 <head>
     <link rel="stylesheet" href= "styles/styles.css">
@@ -45,9 +48,7 @@ require 'php/login/authen.php'
                     <div class="line"></div> -->
 
                     <div class="media-options">
-                        <a href="<?php require 'php/login/authen.php';
-echo $clienteGoogle -> createAuthUrl()?>" class="field google">
-                            
+                        <a href=" <?php echo $client -> createAuthUrl(); ?>" class="field google">
                             <img src="img/icons/googleIcon.png" alt="" class="google-img" >
                             <span>
                             Login with Google</span>
