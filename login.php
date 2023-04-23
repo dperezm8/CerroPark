@@ -1,6 +1,6 @@
 <?php
-
-
+require_once 'php/login/config.php'; //move this line up
+session_start(); //add this line
 ?>
 <html lang="en">
 <head>
@@ -46,9 +46,6 @@
 
                     <div class="media-options">
                         <?php
-                        require_once 'php/login/config.php'; //move this line up
-
-                        session_start(); //add this line
 
                         //se crea un token, y despues le dara acceso al cliente a ese token
                         if (isset($_GET['code'])) {
