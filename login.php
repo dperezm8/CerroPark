@@ -1,8 +1,5 @@
 <?php
-require_once 'php/login/config.php'; //move this line up
-require_once 'php/login/authen.php';
 
-session_start(); //add this line
 
 ?>
 <html lang="en">
@@ -48,12 +45,38 @@ session_start(); //add this line
                     <div class="line"></div> -->
 
                     <div class="media-options">
-                        <a href=" <?php echo $client -> createAuthUrl(); ?>" class="field google">
+                        <?php
+                        require_once 'php/login/config.php'; //move this line up
+
+                        session_start(); //add this line
+
+                        //se crea un token, y despues le dara acceso al cliente a ese token
+                        if (isset($_GET['code'])) {
+                            //se crea el token
+                            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+                            //se le da acceso al token al client
+                            $client->setAccessToken($token['access_token']);
+
+                            //informacion del usuario
+                            $google_oauth = new Google\Service\Oauth2($client);
+                            $google_account_info = $google_oauth->userinfo->get();
+                            $email = $google_account_info->email;
+                            $name = $google_account_info->name;
+
+                            header('Location: ' . $redirectUriGoogleLogin . '?email=' . urlencode($email));
+                            exit;
+                            
+                        } else {
+                            ?>
+                            <a href=" <?php echo $client -> createAuthUrl() ?>" class="field google">
                             <img src="img/icons/googleIcon.png" alt="" class="google-img" >
                             <span>
-                            Login with Google</span>
-                        </a>
-                    </div>
+                                Login with Google</span>
+                            </a>
+                            <?php
+                            }
+                            ?>
+                            </div>
                 </form>
             </div>
         </div>
