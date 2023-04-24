@@ -1,6 +1,6 @@
 <?php
 //Include Google Client Library for PHP autoload file
-require_once '../../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 //llamado del archivo config.ini, donde se guardan las variables ambientales
 

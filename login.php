@@ -59,8 +59,8 @@ session_start(); //add this line
                             $google_account_info = $google_oauth->userinfo->get();
                             $email = $google_account_info->email;
                             $name = $google_account_info->name;
+                            echo 'Email usuario' . $email;
 
-                            header('Location: ' . $redirectUriGoogleLogin . '?email=' . urlencode($email));
                             exit;
                             
                         } else {
