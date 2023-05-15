@@ -1,22 +1,6 @@
 <?php
 
-//logout.php
-
-require_once ('php/login/config.php');
-
-//Reset OAuth access token
-if ($client->getAccessToken() != null) {
-    $client->revokeToken();
-} 
-
-//Destroy entire session data.
 session_start();
-session_unset();
+unset($_SESSION['user_token']);
 session_destroy();
-
-//redirect page to index.php
-header('location:index.php');
-exit;
-
-
-?>
+header("Location: index.php");

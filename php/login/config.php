@@ -1,31 +1,27 @@
 <?php
-//Include Google Client Library for PHP autoload file
 require_once 'vendor/autoload.php';
 
-//llamado del archivo config.ini, donde se guardan las variables ambientales
+session_start();
 
-$config = parse_ini_file('config.ini');
+//credeciales de Google obtenidas mediante la creacion de una app en https://console.cloud.google.com/
+$clientID = '32942193277-m9sjhabr7ctmc8lrsp5cds418s6snnh8.apps.googleusercontent.com';
+$clientSecret = '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';
+$redirectURI = 'http://localhost/TFG/CerroPark/index.php';
 
-//decalracion de variables ambientales
-$clientIDGoogleLogin = $config['clientID'];
-$clientSecretGoogleLogin = $config['clientSecret'];
-$redirectUriGoogleLogin = $config['redirectUri'];
+//cliente Google
+$client = new Google_Client();
+$client->setClientId($clientID);
+$client->setClientSecret($clientSecret);
+$client->setRedirectUri($redirectURI);
+$client->addScope("email");
+$client->addScope("profile");
 
-//Acceso a la API de Google medainte las credenciales
-$client = new Google\Client();
+//conexion a la base de datos
+$host = "localhost";
+$user = "root";
+$pass = "";
+$database = "cerro_park";
 
-//id del client
-$client -> setClientId($clientIDGoogleLogin);
+$conn = mysqli_connect($host, $user, $pass, $database);
 
-//secreto de client
-$client -> setClientSecret($clientSecretGoogleLogin);
-
-//URL de redireccion despues de hacer login
-$client -> setRedirectUri($redirectUriGoogleLogin);
-
-//pedira del perfil el email, y el profile
-$client->addScope('https://www.googleapis.com/auth/userinfo.email');
-$client->addScope('https://www.googleapis.com/auth/userinfo.profile');
-
-
-?> 
+?>
