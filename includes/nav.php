@@ -1,7 +1,3 @@
-<?php
-session_start();
-include 'php/db.php';
-?>
 <nav class="navbar">
     <div class="logonav">
         <div class="imagennav">
