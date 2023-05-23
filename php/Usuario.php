@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+require_once 'db.php';
 
 // Function to fetch all user records
 function fetchUsers()
@@ -47,11 +47,11 @@ $users = fetchUsers();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["update"])) {
         // Update user record
-        $userId = $_POST["userId"];
-        $firstName = $_POST["firstName"];
-        $lastName = $_POST["lastName"];
-        $email = $_POST["email"];
-        $permiso = $_POST["permiso"];
+        $userId = mysqli_real_escape_string($conn, $_POST["userId"]);
+        $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
+        $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $permiso = mysqli_real_escape_string($conn, $_POST["permiso"]);
         updateUser($userId, $firstName, $lastName, $email, $permiso);
     } elseif (isset($_POST["delete"])) {
         // Delete user record
@@ -59,8 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         deleteUser($userId);
     }
 
-    //Busqueda de un usuario segun su email
-    
 }
 
 ?>

@@ -1,5 +1,19 @@
 <?php
 include 'php/Usuario.php';
+//Busqueda de un usuario segun su email
+if($_POST['permisoSearchBar']) {
+    $permisoSearchBar = $_POST['permisoSearchBar'];
+    $query = "SELECT * FROM users WHERE permiso = '$permisoSearchBar'";
+    $result = $conn -> query($query);
+    $users = $result -> fetch_all(MYSQLI_ASSOC);
+}
+
+if(isset($_POST['emailSearchBar'])) {
+    $emailSearchBar = $_POST['emailSearchBar'];
+    $query = "SELECT * FROM users WHERE email LIKE '%$emailSearchBar%'";
+    $result = $conn -> query($query);
+    $users = $result -> fetch_all(MYSQLI_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +26,28 @@ include 'php/Usuario.php';
     <title>User Information</title>
 </head>
 <body>
+<?php
+include 'includes/nav.php';
+?>
     <h1>User Information</h1>
+
+    <form method="POST">
+        <label for="permisoSearchBar">Busqueda segun Permiso:</label>
+        <select name="permisoSearchBar" id="permisoSearchBar">
+            <option hidden></option>
+            <option value="">Todos</option>
+            <option value="1">Usuario</option>
+            <option value="2">Administrador</option>
+            <option value="3">Policia</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    
+    <form method="POST">
+        <label for="emailSearchBar">Search by Email:</label>
+        <input type="text" name="emailSearchBar" id="emailSearchBar">
+        <button type="submit">Search</button>
+    </form>
 
     <table>
         <thead>
@@ -32,11 +67,11 @@ include 'php/Usuario.php';
                     <td><?php echo $user['first_name']; ?></td>
                     <td><?php echo $user['last_name']; ?></td>
                     <td><?php echo $user['email']; ?></td>
-                    <td><?php if ($user['permiso'] == 0) {
+                    <td><?php if ($user['permiso'] == 1) {
                                 echo 'Usuario';
-                                } else if ($user['permiso'] == 1) {
+                                } else if ($user['permiso'] == 2) {
                                     echo 'Administrador';
-                                } else {
+                                } else if ($user['permiso'] == 3) {
                                     echo 'Policia';
                                 }; ?></td>
                     <td>
@@ -47,9 +82,9 @@ include 'php/Usuario.php';
                             <input type="text" name="email" value="<?php echo $user['email']; ?>">
                             <select name="permiso">
                                 <option hidden></option>
-                                <option value="0" <?php echo ($user['permiso'] == 0) ? 'selected' : ''; ?>>Usuario</option>
-                                <option value="1" <?php echo ($user['permiso'] == 1) ? 'selected' : ''; ?>>Adminstrador</option>
-                                <option value="2" <?php echo ($user['permiso'] == 2) ? 'selected' : ''; ?>>Policia</option>
+                                <option value="1" <?php echo ($user['permiso'] == 1) ? 'selected' : ''; ?>>Usuario</option>
+                                <option value="2" <?php echo ($user['permiso'] == 2) ? 'selected' : ''; ?>>Adminstrador</option>
+                                <option value="3" <?php echo ($user['permiso'] == 3) ? 'selected' : ''; ?>>Policia</option>
                             </select>
                             <button type="submit" name="update">Update</button>
                             <button type="submit" name="delete">Delete</button>
@@ -59,7 +94,9 @@ include 'php/Usuario.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+<?php
+include 'includes/footer.php';
+?>
 
-    <a href="index.php">Go Back</a>
 </body>
 </html>

@@ -1,6 +1,5 @@
-<?php
-require 'php/Usuario.php';
-?>
+
+
 
 <nav class="navbar">
     <div class="logonav">
