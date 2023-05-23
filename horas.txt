@@ -1,5 +1,5 @@
 docu - 3 horas
 login - 10 horas 30 min
-tabla usuarios menu admin - 1 hora 40 min
+tabla usuarios menu admin - 2 hora 35 min
 acceso datos usuario desde otras paginas - 30 min
 crud - 3 horas
