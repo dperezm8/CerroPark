@@ -1,16 +1,11 @@
 <?php
 include 'php/Usuario.php';
-//Busqueda de un usuario segun su email
-if($_POST['permisoSearchBar']) {
-    $permisoSearchBar = $_POST['permisoSearchBar'];
-    $query = "SELECT * FROM users WHERE permiso = '$permisoSearchBar'";
-    $result = $conn -> query($query);
-    $users = $result -> fetch_all(MYSQLI_ASSOC);
-}
 
-if(isset($_POST['emailSearchBar'])) {
-    $emailSearchBar = $_POST['emailSearchBar'];
-    $query = "SELECT * FROM users WHERE email LIKE '%$emailSearchBar%'";
+if(isset($_POST['searchBar'])) {
+    $searchBar = $_POST['searchBar'];
+    $query = "SELECT * FROM users WHERE email LIKE '%$searchBar%' or 
+                                        first_name LIKE '%$searchBar%'or
+                                        last_name LIKE '%$searchBar%'";
     $result = $conn -> query($query);
     $users = $result -> fetch_all(MYSQLI_ASSOC);
 }
@@ -31,21 +26,11 @@ include 'includes/nav.php';
 ?>
     <h1>User Information</h1>
 
-    <form method="POST">
-        <label for="permisoSearchBar">Busqueda segun Permiso:</label>
-        <select name="permisoSearchBar" id="permisoSearchBar">
-            <option hidden></option>
-            <option value="">Todos</option>
-            <option value="1">Usuario</option>
-            <option value="2">Administrador</option>
-            <option value="3">Policia</option>
-        </select>
-        <button type="submit">Search</button>
-    </form>
+    
     
     <form method="POST">
-        <label for="emailSearchBar">Search by Email:</label>
-        <input type="text" name="emailSearchBar" id="emailSearchBar">
+        
+        <input type="text" name="searchBar" id="searchBar" placeholder="Nombre, apellido o email">
         <button type="submit">Search</button>
     </form>
 
@@ -53,11 +38,11 @@ include 'includes/nav.php';
         <thead>
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
-                <th>Permiso</th>
-                <th>Actions</th>
+                <th>Tipo</th>
+                <th>Control de Administrador</th>
             </tr>
         </thead>
         <tbody>
@@ -86,8 +71,8 @@ include 'includes/nav.php';
                                 <option value="2" <?php echo ($user['permiso'] == 2) ? 'selected' : ''; ?>>Adminstrador</option>
                                 <option value="3" <?php echo ($user['permiso'] == 3) ? 'selected' : ''; ?>>Policia</option>
                             </select>
-                            <button type="submit" name="update">Update</button>
-                            <button type="submit" name="delete">Delete</button>
+                            <button type="submit" name="update">Editar</button>
+                            <button type="submit" name="delete">Borrar</button>
                         </form>
                     </td>
                 </tr>

@@ -5,11 +5,11 @@ $emailNoValid = $passNoValid = $passNoMatch= '';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm_password'];
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $confirmPassword = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $firstName = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $lastName = mysqli_real_escape_string($conn, $_POST['last_name']);
 
     // Check if the passwords match
     if ($password !== $confirmPassword) {

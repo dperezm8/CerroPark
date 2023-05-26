@@ -1,6 +1,7 @@
-docu - 3 horas
+mock-ups - 2 hora 14 min (terminado)
+docu - 5 horas 27 min
 login - 10 horas 30 min
 tabla usuarios menu admin - 1 hora 40 min
-search bar par usuarios - 55 min
+search bar para usuarios - 1 hora 20 min
 acceso datos usuario desde otras paginas - 30 min
 crud - 3 horas
