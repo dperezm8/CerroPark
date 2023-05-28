@@ -33,48 +33,46 @@
                         <input type="text" name="modelo" placeholder="Modelo" class="input" required>
                     </div>
                     <div class="field input-field">
-                        <select name="email" placeholder="Email" class="input" required>      
-                            <option hidden><option>
-                            <option value='1'>A<option>                  
-                            <option value='1'>B<option>                  
-                            <option value='1'>C<option>                  
-                            <option value='1'>D<option>                  
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="text" name="password" placeholder="Contraseña" class="input" required>
+                        <input type="text" name="matricula" placeholder="Matricula" class="input" required>
                     </div>
                     <div class="field input-field">
-                        <input type="text" name="confirm_password" placeholder="Confirma contraseña" class="input" required>
+                        <label for="paisDeMatricula">Pais del Vehiculo</label>
+                        <select name="paisDeMatricula" class="input" required>    
+                            <optgroup label="Europa">
+                                <option value='D'>Alemania<option>                  
+                                <option value='A'>Austria<option>
+                                <option value='B'>Bélgica<option>
+                                <option value='CZ'>Chequia<option>
+                                <option value='CY'>Chipre<option>
+                                <option value='HR'>Croacia<option>
+                                <option value='DK'>Dinamarca<option>
+                                <option value='SK'>Eslovaquia<option>
+                                <option value='SLO'>Eslovenia<option>
+                                <option value='E' selected>España<option>
+                                <option value='EST'>Estonia<option>
+                                <option value='FIN'>Finlandia<option>
+                                <option value='F'>Francia<option>
+                                <option value='GR'>Grecia<option>
+                                <option value='H'>Hungría<option>
+                                <option value='IRL'>Irlandia<option>
+                                <option value='I'>Italia<option>
+                                <option value='LV'>Letonia<option>
+                                <option value='LT'>Lituania<option>
+                                <option value='L'>Luxemburgo<option>
+                                <option value='M'>Malta<option>
+                                <option value='NL'>Países Bajos<option>
+                                <option value='PL'>Polonia<option>
+                                <option value='P'>Portugal<option>
+                                <option value='RO'>Rumanía<option>
+                                <option value='S'>Suecia<option>
+                            </optgroup>              
+                        </select>
                     </div>
 
                     <div class="field button-field">
                         <button type="submit">
-                            Registrate</button>
+                            Añadir</button>
                     </div>
-
-                    <div class="form-link">
-                        <span>Ya tienes una cuenta?<a href="login.php">Inicia sesion </a></span>
-                    </div>
-
-                    <!-- <div class="line"></div>  -->
-
-                    <!-- <div class="media-options">
-                        
-                        <?php
-                        // require_once 'php/login/config.php'; 
-                        // if(isset($_SESSION['user_token'])) {
-                        //     header("Location: index.php");
-                        // } else {
-                        //     echo "<a href='". $client->createAuthUrl()."' class='field google'>";
-                        // }
-                    ?>
-                    <img src="img/icons/googleIcon.png" alt="" class="google-img" >
-
-                    <span>
-                        Login with Google</span>
-                    </a>
-                </div> -->
             </form>
         </div>
     </div>

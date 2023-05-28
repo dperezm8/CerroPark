@@ -43,7 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        mysqli_stmt_execute($stmt);
 
        // Redirect to index.php or any desired page
-       header("Location: login.php");
+       session_start();
+       $_SESSION['email'] = $email;
+       //se añade la id del usuario al urlsss
+       header("Location: index.php");
        exit();
    }
 }

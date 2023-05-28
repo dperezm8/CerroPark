@@ -6,6 +6,7 @@ session_start();
 $emailNoValid = $passNoValid = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstName = $_POST['first_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //mediante funcion hash se encripta la id del usuario
             $hashedId = hash('md5', $userId);
             //se añade la id del usuario al urlsss
-            header("Location: index.php?id=$userId");
+            header("Location: index.php?id=$hashedId");
             exit();
         } else {
             $passNoValid = 'Contraseña no válida';

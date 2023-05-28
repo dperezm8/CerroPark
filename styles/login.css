@@ -59,6 +59,15 @@ form .field {
     border: 1px solid #CACACA;
 }
 
+label {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
 .field button {
     background-color: #0171d3;
 }

@@ -1,10 +1,14 @@
+Docu
 mock-ups - 2 hora 14 min (terminado)
-docu - 5 horas 27 min
+memoria - 5 horas 27 min
+Usuarios
 login - 10 horas 30 min
 tabla usuarios menu admin - 1 hora 40 min
 search bar para usuarios - 1 hora 20 min
 acceso datos usuario desde otras paginas - 30 min
 diferencias tipos de usuario - 3 hora 44 min (terminado)
 crud - 3 horas
+Coches
+formulario creacion coches - 44 min
 
-total - 28 horas 25 minutos
+total - 29 horas 9 minutos
