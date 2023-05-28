@@ -23,25 +23,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $passNoValido = "Necesario: numero, letra mayuscula y 8 o mas caracteres";
     }
 
-    // Check if email already exists
-    $query = "SELECT * FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $query);
+   // Check if email already exists using prepared statement
+   $query = "SELECT * FROM users WHERE email=?";
+   $stmt = mysqli_prepare($conn, $query);
+   mysqli_stmt_bind_param($stmt, 's', $email);
+   mysqli_stmt_execute($stmt);
+   $result = mysqli_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($result) > 0) {
-        $emailNoValido = "Ya hay un usuario con ese email, escoja otro.";
-    }
+   if (mysqli_num_rows($result) > 0) {
+       $emailNoValido = "Ya hay un usuario con ese email, escoja otro.";
+   }
 
-    //en caso que no haya errores los mensajes se dice que estan empty
-    if(empty($emailNoValido) && empty($passNoValido) && empty($passDontMatch)) {
-        //se coge la variable password y se pasa por una funcion de encryptacion hash
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        // Insert new user into the database
-        $insertQuery = "INSERT INTO users (email, password, first_name, last_name) VALUES ('$email', '$hashedPassword', '$firstName', '$lastName')";
-        mysqli_query($conn, $insertQuery);
+   // If there are no errors, insert the new user into the database using prepared statement
+   if(empty($emailNoValido) && empty($passNoValido) && empty($passDontMatch)) {
+       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+       $insertQuery = "INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)";
+       $stmt = mysqli_prepare($conn, $insertQuery);
+       mysqli_stmt_bind_param($stmt, 'ssss', $email, $hashedPassword, $firstName, $lastName);
+       mysqli_stmt_execute($stmt);
 
-        // Redirect to index.php or any desired page
-        header("Location: login.php");
-        exit();
-    }
+       // Redirect to index.php or any desired page
+       header("Location: login.php");
+       exit();
+   }
 }
 ?>

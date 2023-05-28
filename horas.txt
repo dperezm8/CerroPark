@@ -6,3 +6,5 @@ search bar para usuarios - 1 hora 20 min
 acceso datos usuario desde otras paginas - 30 min
 diferencias tipos de usuario - 3 hora 44 min (terminado)
 crud - 3 horas
+
+total - 28 horas 25 minutos

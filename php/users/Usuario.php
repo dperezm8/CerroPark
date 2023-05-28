@@ -26,6 +26,9 @@ function updateUser($id, $firstName, $lastName, $email, $permiso)
     $stmt->bind_param("sssii", $firstName, $lastName, $email, $permiso, $id);
     $stmt->execute();
     $stmt->close();
+
+    header("Location: usersInfo.php");
+    exit();
 }
 
 // Function to delete a user record
@@ -38,6 +41,9 @@ function deleteUser($id)
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
+
+    header("Location: usersInfo.php");
+    exit();
 }
 
 // Fetch all user records
