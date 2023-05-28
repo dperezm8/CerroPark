@@ -1,5 +1,5 @@
 <?php
-include 'php/login.php';
+include 'php/users/login.php';
 ?>
 
 <html lang="en">
@@ -32,13 +32,13 @@ include 'php/login.php';
                 <header><strong>Inicia Sesión</strong></header>
                 <form method="POST" action="login.php">
                     <div class="field input-field">
-                        <input type="email" name="email" placeholder="Email" class="input" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
-                        <span class="error-message"><?php echo $emailNoValid; ?></span><br><br>
+                        <input type="email" name="email" placeholder="Email" class="input" value="<?=isset($_POST['email']) ? $_POST['email'] : ''; ?>">
+                        <span class="error-message"><?=$emailNoValid; ?></span><br><br>
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" name="password" placeholder="Contraseña" class="input" value = "<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>">
-                        <span class="error-message"><?php echo $passNoValid; ?></span><br><br>
+                        <input type="password" name="password" placeholder="Contraseña" class="input" value = "<?=isset($_POST['password']) ? $_POST['password'] : ''; ?>">
+                        <span class="error-message"><?=$passNoValid; ?></span><br><br>
                     </div>
 
                     <div class="field button-field">
@@ -48,25 +48,6 @@ include 'php/login.php';
                     <div class="form-link">
                         <span>Aún no tienes cuenta?<a href="register.php">Registrate</a></span>
                     </div>
-
-                    <!-- <div class="line"></div>  -->
-
-                    <!-- <div class="media-options">
-                        
-                        <?php
-                        // require_once 'php/login/config.php'; 
-                        // if(isset($_SESSION['user_token'])) {
-                        //     header("Location: index.php");
-                        // } else {
-                        //     echo "<a href='". $client->createAuthUrl()."' class='field google'>";
-                        // }
-                    ?>
-                    <img src="img/icons/googleIcon.png" alt="" class="google-img" >
-
-                    <span>
-                        Login with Google</span>
-                    </a>
-                </div> -->
             </form>
         </div>
     </div>

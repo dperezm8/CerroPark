@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'php/db.php';
 
 // Function to fetch all user records
 function fetchUsers()
@@ -58,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userId = $_POST["userId"];
         deleteUser($userId);
     }
-
 }
 
 ?>

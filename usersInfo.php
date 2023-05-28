@@ -1,15 +1,19 @@
 <?php
-include 'php/Usuario.php';
+include 'php/users/Usuario.php';
+$controlPermiso = 2;
+include 'php/users/redirect.php';
 
-if(isset($_POST['searchBar'])) {
+// Rest of the code for usersInfo.php
+// Add your code here for the usersInfo.php functionality
+
+if (isset($_POST['searchBar'])) {
     $searchBar = $_POST['searchBar'];
     $query = "SELECT * FROM users WHERE email LIKE '%$searchBar%' or 
                                         first_name LIKE '%$searchBar%'or
                                         last_name LIKE '%$searchBar%'";
-    $result = $conn -> query($query);
-    $users = $result -> fetch_all(MYSQLI_ASSOC);
+    $result = $conn->query($query);
+    $users = $result->fetch_all(MYSQLI_ASSOC);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

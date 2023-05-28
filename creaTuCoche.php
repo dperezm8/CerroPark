@@ -1,8 +1,3 @@
-<?php
-include 'php/users/register.php';
-
-?>
-<html lang="en">
 <head>
     <link rel="stylesheet" href= "styles/styles.css">
     <link rel="stylesheet" href= "styles/login.css">
@@ -12,7 +7,7 @@ include 'php/users/register.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="scripts/hamburguer.js" defer></script>
     <script src="scripts/login.js"></script>
-    <title>Crea tu usuario</title>
+    <title>Añade tu Coche</title>
     <style>
         
 .error-message {
@@ -29,27 +24,28 @@ include 'php/users/register.php';
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
-                <header><strong>Crea tu usuario</strong></header>
+                <header><strong>Añade tu Coche</strong></header>
                 <form method="POST" action="register.php">
                 <div class="field input-field">
-                        <input type="text" name="first_name" placeholder="Nombre" class="input" value="<?php echo isset($_POST['first_name']) ? $_POST['first_name'] : ''; ?>" required>
+                        <input type="text" name="marca" placeholder="Marca" class="input" required>
                     </div>
                     <div class="field input-field">
-                        <input type="text" name="last_name" placeholder="Apellidos" class="input" value="<?php echo isset($_POST['last_name']) ? $_POST['last_name'] : ''; ?>" required>
+                        <input type="text" name="modelo" placeholder="Modelo" class="input" required>
                     </div>
                     <div class="field input-field">
-                        <input type="email" name="email" placeholder="Email" class="input" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
-                        <span class="error-message"><?php echo $emailNoValido; ?></span><br><br>
-                        
+                        <select name="email" placeholder="Email" class="input" required>      
+                            <option hidden><option>
+                            <option value='1'>A<option>                  
+                            <option value='1'>B<option>                  
+                            <option value='1'>C<option>                  
+                            <option value='1'>D<option>                  
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" name="password" placeholder="Contraseña" class="input" required>
-                        <span class="error-message"><?php echo $passNoValido; ?></span><br><br>
+                        <input type="text" name="password" placeholder="Contraseña" class="input" required>
                     </div>
                     <div class="field input-field">
-                        <input type="password" name="confirm_password" placeholder="Confirma contraseña" class="input" required>
-                        <span class="error-message"><?php echo $passDontMatch; ?></span><br><br>
+                        <input type="text" name="confirm_password" placeholder="Confirma contraseña" class="input" required>
                     </div>
 
                     <div class="field button-field">
