@@ -9,6 +9,8 @@ acceso datos usuario desde otras paginas - 30 min
 diferencias tipos de usuario - 3 hora 44 min (terminado)
 crud - 3 horas
 Coches
-formulario creacion coches - 44 min
+formulario creacion coches - 1 hora 24 min
+crud - 5 hora 28 min
+tabla coches admin - 47 min
 
-total - 29 horas 9 minutos
+total - 38 horas 04 minutos

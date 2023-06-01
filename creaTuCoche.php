@@ -1,3 +1,7 @@
+<?php
+include 'php/coches/creaTuCoche.php';
+
+?>
 <head>
     <link rel="stylesheet" href= "styles/styles.css">
     <link rel="stylesheet" href= "styles/login.css">
@@ -25,18 +29,23 @@
         <div class="form login">
             <div class="form-content">
                 <header><strong>Añade tu Coche</strong></header>
-                <form method="POST" action="register.php">
+                <span class="error-message"><?php echo $maximoCoches; ?></span><br><br>
+                <form method="POST" action="creaTuCoche.php">
                 <div class="field input-field">
-                        <input type="text" name="marca" placeholder="Marca" class="input" required>
+                        <input type="text" name="marca" placeholder="Marca" class="input" value="<?php echo isset($_POST['marca']) ? $_POST['marca'] : ''; ?>" required>
                     </div>
+
                     <div class="field input-field">
-                        <input type="text" name="modelo" placeholder="Modelo" class="input" required>
+                        <input type="text" name="modelo" placeholder="Modelo" class="input" value="<?php echo isset($_POST['modelo']) ? $_POST['modelo'] : ''; ?>" required>
                     </div>
+
                     <div class="field input-field">
-                        <input type="text" name="matricula" placeholder="Matricula" class="input" required>
+                        <input type="text" name="matricula" placeholder="Matricula" class="input" value="<?php echo isset($_POST['matricula']) ? $_POST['matricula'] : ''; ?>" minlength="7" maxlength="12" required>
+                        <span class="error-message"><?php echo $matriculaNoValida; ?></span><br><br>
                     </div>
+                    
                     <div class="field input-field">
-                        <label for="paisDeMatricula">Pais del Vehiculo</label>
+                        <label for="paisDeMatricula">Seleccione el país de su vehiculo</label>
                         <select name="paisDeMatricula" class="input" required>    
                             <optgroup label="Europa">
                                 <option value='D'>Alemania<option>                  
@@ -68,12 +77,35 @@
                             </optgroup>              
                         </select>
                     </div>
+                 
+                    <div class="field input-field">
+                        <label for="cocheTemporal">¿Es un coche temporal?</label>
+                        <input type="checkbox" name="cocheTemporal" placeholder="Matricula" class="input" onclick="eliminaFecha(this)">
+                        <input type="hidden" id="valorTemporal" name="cocheTemporal" value="0">
+                    </div>
+
+                    <div class="field input-field" id="validoHasta">
+                        <label for="validoHasta">Ultima fecha de validez (maximo un año)</label>
+                        <input type="date" name="validoHasta" placeholder="Fecha de Alta" class="input" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 year')); ?>">
+                    </div>
 
                     <div class="field button-field">
                         <button type="submit">
                             Añadir</button>
                     </div>
             </form>
+
+            <script>
+                function eliminaFecha(checkbox) {
+                    var cocheTemporal = document.getElementById('valorTemporal');
+                    var validoHastaField = document.getElementById('validoHasta');
+                    validoHastaField.style.display = checkbox.checked ? 'none' : 'block';
+                    validoHastaField.querySelector('input').required = !checkbox.checked;
+                    cocheTemporal.value = checkbox.checked ? '1' : '0';
+                }
+
+    </script>
+            
         </div>
     </div>
 </section>

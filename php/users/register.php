@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    // If there are no errors, insert the new user into the database using prepared statement
    if(empty($emailNoValido) && empty($passNoValido) && empty($passDontMatch)) {
-       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+       $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
        $insertQuery = "INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)";
        $stmt = mysqli_prepare($conn, $insertQuery);
        mysqli_stmt_bind_param($stmt, 'ssss', $email, $hashedPassword, $firstName, $lastName);

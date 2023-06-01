@@ -6,6 +6,7 @@ session_start();
 $emailNoValid = $passNoValid = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
     $firstName = $_POST['first_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -17,16 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check the database for the user
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
+        $_SESSION['id'] = $row['id'];
         $hashedPassword = $row['password'];
 
         // Verify the password matches the hashed password
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['email'] = $email;
             $userId = $row['id'];
-            //mediante funcion hash se encripta la id del usuario
+            // mediante funcion hash se encripta la id del usuario
             $hashedId = hash('md5', $userId);
-            //se añade la id del usuario al urlsss
-            header("Location: index.php?id=$hashedId");
+            $_SESSION['idUsuarioCoche'] = $row['id'];
+            // se añade la id del usuario al URL
+            header("Location: index.php?userId=$hashedId");
             exit();
         } else {
             $passNoValid = 'Contraseña no válida';

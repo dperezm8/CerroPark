@@ -22,7 +22,7 @@ include 'php/users/register.php';
 }
     </style>
 </head>
-    <body>
+<body>
     <?php
     include 'includes/nav.php';
     ?>
@@ -31,22 +31,24 @@ include 'php/users/register.php';
             <div class="form-content">
                 <header><strong>Crea tu usuario</strong></header>
                 <form method="POST" action="register.php">
-                <div class="field input-field">
+                    <div class="field input-field">
                         <input type="text" name="first_name" placeholder="Nombre" class="input" value="<?php echo isset($_POST['first_name']) ? $_POST['first_name'] : ''; ?>" required>
                     </div>
+
                     <div class="field input-field">
                         <input type="text" name="last_name" placeholder="Apellidos" class="input" value="<?php echo isset($_POST['last_name']) ? $_POST['last_name'] : ''; ?>" required>
                     </div>
+
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required>
                         <span class="error-message"><?php echo $emailNoValido; ?></span><br><br>
-                        
                     </div>
 
                     <div class="field input-field">
                         <input type="password" name="password" placeholder="Contraseña" class="input" required>
                         <span class="error-message"><?php echo $passNoValido; ?></span><br><br>
                     </div>
+
                     <div class="field input-field">
                         <input type="password" name="confirm_password" placeholder="Confirma contraseña" class="input" required>
                         <span class="error-message"><?php echo $passDontMatch; ?></span><br><br>
@@ -60,31 +62,12 @@ include 'php/users/register.php';
                     <div class="form-link">
                         <span>Ya tienes una cuenta?<a href="login.php">Inicia sesion </a></span>
                     </div>
-
-                    <!-- <div class="line"></div>  -->
-
-                    <!-- <div class="media-options">
-                        
-                        <?php
-                        // require_once 'php/login/config.php'; 
-                        // if(isset($_SESSION['user_token'])) {
-                        //     header("Location: index.php");
-                        // } else {
-                        //     echo "<a href='". $client->createAuthUrl()."' class='field google'>";
-                        // }
-                    ?>
-                    <img src="img/icons/googleIcon.png" alt="" class="google-img" >
-
-                    <span>
-                        Login with Google</span>
-                    </a>
-                </div> -->
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-<?php
-include 'includes/footer.php';
-?>
+    </section>
+    <?php
+    include 'includes/footer.php';
+    ?>
 </body>
 </html>

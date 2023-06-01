@@ -2,6 +2,10 @@
 include 'php/users/Usuario.php';
 $controlPermiso = 2;
 include 'php/users/redirect.php';
+$variableBusqueda1 = 'email';
+$variableBusqueda2 = 'first_name';
+$variableBusqueda3 = 'last_name';
+$mezclaVariable = "CONCAT(first_name, ' ', last_name)";
 include 'php/searchBar.php';
 
 
@@ -63,7 +67,7 @@ include 'includes/nav.php';
                             <select name="permiso">
                                 <option hidden></option>
                                 <option value="1" <?php echo ($user['permiso'] == 1) ? 'selected' : ''; ?>>Usuario</option>
-                                <option value="2" <?php echo ($user['permiso'] == 2) ? 'selected' : ''; ?>>Adminstrador</option>
+                                <option value="2" <?php echo ($user['permiso'] == 2) ? 'selected' : ''; ?>>Administrador</option>
                                 <option value="3" <?php echo ($user['permiso'] == 3) ? 'selected' : ''; ?>>Policia</option>
                             </select>
                             <button type="submit" name="update">Editar</button>

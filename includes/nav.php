@@ -1,5 +1,5 @@
 <?php
-include 'php/users/login.php';
+require 'php/users/login.php';
 include 'php/db.php'; // Include the database connection file
 
 // Fetch user information from the database if logged in
@@ -39,7 +39,7 @@ include 'php/db.php'; // Include the database connection file
                     // Set the title with user information
                     $titulo;
                     if ($permiso == 2) {
-                        $titulo = 'Administrador';
+                        $titulo = 'Administrador(a)';
                     } else if ($permiso == 3) {
                         $titulo = 'Oficial';
                     } else {
@@ -48,7 +48,8 @@ include 'php/db.php'; // Include the database connection file
                     $title = "Hola, $titulo $firstName $lastName";
                     echo "<li><a href='index.php'>" . $title . "</a></li>";
                     if ($permiso == 2) {
-                        echo "<li><a href='usersInfo.php'>Menu Admin</a></li>";
+                        echo "<li><a href='usersInfo.php'>Control de Usuarios</a></li>";
+                        echo "<li><a href='cochesInfo.php'>Control de Coches</a></li>";
                     } else if ($permiso == 3) {
 
                     } else {
