@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 07:53 AM
+-- Generation Time: Jun 03, 2023 at 06:30 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `coches` (
   `idCoches` int(11) NOT NULL,
   `paisDeMatricula` varchar(4) DEFAULT 'E',
-  `matricula` varchar(12) NOT NULL,
+  `matricula` varchar(255) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `modelo` varchar(50) DEFAULT NULL,
   `color` varchar(50) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `coches` (
   `fechaAlta` date NOT NULL,
   `deBaja` tinyint(1) NOT NULL,
   `fechaBaja` date NOT NULL,
-  `idUsuarioCoche` int(11) NOT NULL
+  `idUsuarioCoche` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,13 +62,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `permiso`) VALUES
-(2, 'diego.perez@gmail.com', '$2y$10$KDTBVHt.RA4/r7zfZlJq0OTU4u./1qWyDoJHxMQvNp6rXzi8EPLMy', 'Diego Alberto', 'Pérez Meza', 2),
-(3, 'diego.perez01112@gmail.com', '$2y$10$Jtqr7zgAYWhpVNv4.PcD.eJ29JYxE4IAf/LadQpUZMh8gjRB/3WNi', 'Diego Alberto', 'Pérez Meza', 2),
-(4, 'diegoperez01112@gmail.com', '$2y$10$ROfRLZaT4qMbqEeUMPVSTODb.OfOXaUkWNvW2pSyMMbLybVnMAzUO', 'Diego Alberto', 'Pérez Meza', 1),
-(5, 'maria_mezam@hotmail.com', '$2y$10$2AhkauCh8n3BDORqQn7OVOU5zn8g/Gizuq5qXJUkx2Ig9TDEq297a', 'MARIA JOSEFINA', 'MORALES', 3),
-(6, 'gabriel.perez07084@gmail.com', '$2y$10$cwcevZ8KkVQxCKmlKEQiKu6N93LvZt4A/miaPO9l.eU6uZEQAwEc6', 'Gabriel Alberto', 'Pérez Meza', 1),
-(7, 'gabriel.perez07@gmail.com', '$2y$10$ry45PRpOFCMjkVYMeDHXau6jF7EVyIk.HcCNdraHZSujiFcvoD28O', 'Gabriel Alberto', 'Pérez Meza', 1),
-(8, 'adrianamcb@gmail.com', '$2y$10$dDYcc.lXDdIS3L.CCdujmOyOmMJzURN0DT9W9LlrGjC9Xqfpvyl5O', 'Adriana (koala)', 'Martinez', 2);
+(1, 'diegoperez01112@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$dXI4eWdBWk9yL0NIZWN4Ng$voSfmGS6bFdZ1B8PEIt4cYPpC7BoNg2gv7JSYCtbC+0', 'Diego Alberto', 'Pérez Meza', 2);
 
 --
 -- Indexes for dumped tables
@@ -101,7 +95,7 @@ ALTER TABLE `coches`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
