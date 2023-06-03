@@ -108,3 +108,9 @@ include 'includes/footer.php';
 ?>
 </body>
 </html>
+<!--
+    
+Web administrativa para el Cerro de Los Angeles
+Creada por ʕ•ᴥ•ʔ Diego Pérez ʕ•ᴥ•ʔ
+
+-->
