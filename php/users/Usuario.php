@@ -17,17 +17,17 @@ function fetchUsers()
 }
 
 // Function to update a user record
-function updateUser($id, $firstName, $lastName, $email, $permiso)
+function updateUser($id, $permiso)
 {
     global $conn;
 
-    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, permiso = ? WHERE id = ?";
+    $query = "UPDATE users SET permiso = ? WHERE id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssii", $firstName, $lastName, $email, $permiso, $id);
+    $stmt->bind_param("si", $permiso, $id);
     $stmt->execute();
     $stmt->close();
 
-    header("Location: usersInfo.php");
+    header("Location: usersInfo");
     exit();
 }
 
@@ -36,13 +36,29 @@ function deleteUser($id)
 {
     global $conn;
 
-    $query = "DELETE FROM users WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->close();
+    $deleteCarsQuery = "DELETE FROM coches WHERE idUsuarioCoche = ?";
+    $stmtDeleteCars = $conn->prepare($deleteCarsQuery);
+    $stmtDeleteCars->bind_param("i", $id);
+    $stmtDeleteCars->execute();
+    $stmtDeleteCars->close();
 
-    header("Location: usersInfo.php");
+    // Delete the user
+    $deleteUserQuery = "DELETE FROM users WHERE id = ?";
+    $stmtDeleteUser = $conn->prepare($deleteUserQuery);
+    $stmtDeleteUser->bind_param("i", $id);
+
+    if ($stmtDeleteUser->execute()) {
+        // Successful deletion
+        header("Location: usersInfo.php");
+        exit();
+    } else {
+        // Error occurred
+        echo "Error deleting user: " . $conn->error;
+    }
+
+    $stmtDeleteUser->close();
+
+    header("Location: usersInfo");
     exit();
 }
 
@@ -54,11 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["update"])) {
         // Update user record
         $userId = mysqli_real_escape_string($conn, $_POST["userId"]);
-        $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
-        $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
-        $email = mysqli_real_escape_string($conn, $_POST["email"]);
         $permiso = mysqli_real_escape_string($conn, $_POST["permiso"]);
-        updateUser($userId, $firstName, $lastName, $email, $permiso);
+        updateUser($userId, $permiso);
     } elseif (isset($_POST["delete"])) {
         // Delete user record
         $userId = $_POST["userId"];

@@ -9,9 +9,7 @@ include 'php/users/login.php';
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts/hamburguer.js" defer></script>
-    <script src="scripts/login.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inicia Sesión</title>
     <style>
         
@@ -46,7 +44,7 @@ include 'php/users/login.php';
                     </div>
 
                     <div class="form-link">
-                        <span>Aún no tienes cuenta?<a href="register.php">Registrate</a></span>
+                        <span>Aún no tienes cuenta?<a href="register">Registrate</a></span>
                     </div>
             </form>
         </div>

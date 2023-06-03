@@ -26,7 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fechaAlta = date('Y-m-d');
 
     $deBaja = 0;
-    $fechaBaja = '';
+    if ($deBaja == 1) {
+        $fechaBaja = date('Y-m-d');
+    } else if ($deBaja == 0); {
+        $fechaBaja = '';
+    }
+    
     $idUsuarioCoche = $_SESSION['idUsuarioCoche'];
 
     // Check if car with the same license plate already exists using prepared statement
@@ -39,18 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($result) > 0) {
         $matriculaNoValida = "Ya hay un coche con esa matricula registrado.";
     }
-    
-    $stmt1 = $conn->prepare("SELECT COUNT(*) FROM coches WHERE idUsuarioCoche = $idUsuarioCoche");
-    $stmt1 = mysqli_prepare($conn, $query);
-    //Saco el resultado del query y lo guardo en la variable result, todo el contenido total
-    mysqli_stmt_bind_param($stmt1, 's', $idUsuarioCoche);
-    mysqli_stmt_execute($stmt1);
-    $result1 = mysqli_stmt_get_result($stmt1);
-    //Resultcheck devuelve el número de filas que hay en el resultado del query
-    
-        if (mysqli_num_rows($result1) > 2) {
-            $maximoCoches = "Ha superado el numero maximo de vehiculos (2).";
-        }
+
+    $countQuery = "SELECT COUNT(*) AS carCount FROM coches WHERE idUsuarioCoche=? and deBaja = 0";
+    $countStmt = mysqli_prepare($conn, $countQuery);
+    mysqli_stmt_bind_param($countStmt, 'i', $idUsuarioCoche);
+    mysqli_stmt_execute($countStmt);
+    $countResult = mysqli_stmt_get_result($countStmt);
+    $countRow = mysqli_fetch_assoc($countResult);
+    $carCount = $countRow['carCount'];
+
+    if ($carCount >= 2) {
+        $maximoCoches = "Ha superado el numero maximo de vehiculos (2). Regresando a Inicio";
+        $cochesMensaje = "No se ha podido crear el coche";
+    } else {
+        $cochesMensaje = "Coche creado con exito";
+    }
 
     // If there are no errors, insert the new car into the database using prepared statement
     if (empty($matriculaNoValida) && empty($maximoCoches)) {
@@ -66,11 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $idUsuarioCoche = $_SESSION['idUsuario'];
 
             // Append the userId variable to the URL
-            header("Location: index.php?creation_success&mensajeCoches=$maximoCoche&matricula=$");
+            header("Location: index?creation_success&$cochesMensaje");
             exit();
         } else {
             echo "Error executing query: " . mysqli_error($conn);
         }
+    } else if (!empty($maximoCoches)) {
+        echo '<script>
+        setTimeout(function() {
+            window.location.href = "index?creation_failure&' . $cochesMensaje. '";
+        }, 3000);
+    </script>';
     }
 }
+error_reporting(E_ALL & ~E_NOTICE);
 ?>

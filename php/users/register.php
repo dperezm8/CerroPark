@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        session_start();
        $_SESSION['email'] = $email;
        //se añade la id del usuario al urlsss
-       header("Location: index.php");
+       header("Location: index");
        exit();
    }
 }

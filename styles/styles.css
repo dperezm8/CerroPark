@@ -52,6 +52,12 @@ body {
     color: rgb(255, 46, 54);
     padding: 3.5rem 1rem 3.5rem 1rem;
 }
+.navbar-links li {
+    display: block;
+    text-decoration: none;
+    color: rgb(255, 46, 54);
+    padding: 3.5rem 1rem 3.5rem 1rem;
+}
 
 .navbar-links li:hover {
     background-color: #5f8686;
@@ -79,6 +85,7 @@ body {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
     }
 
     .toggle-button {

@@ -19,14 +19,16 @@ if (isset($_SESSION['email'])) {
         $permiso = $row['permiso'];
 
         if ($permiso != $controlPermiso) {
-            header("Location: index.php");
+            header("Location: index");
             exit();
         }
     } else {
-        header("Location: index.php");
+        header("Location: index");
         exit();
     }
 } else {
-    header("Location: index.php");
+    header("Location: index");
     exit();
 }
+
+error_reporting(E_ALL & ~E_NOTICE);

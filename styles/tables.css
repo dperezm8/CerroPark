@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #cacaca;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #0171d3;
+    color: #fff;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #beffd493;
+  }
+  table tbody tr:nth-child(odd) {
+    background-color: #f2f2f29f;
+  }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgb(255, 46, 54);
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  form {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .grupoInput {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .grupoInput input[type="text"] {
+    height: 45px;
+    width: 100%;
+    max-width: 250px;
+    padding: 0 15px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    margin-right: 10px;
+  }
+    
+  .grupoInput select {
+    height: 45px;
+    width: 100%;
+    max-width: 150px;
+    padding: 0 15px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 16px;
+    border-spacing: 12px;
+    background-color: #0171d3;
+    color: #fff;
+  }
+  
+  .grupoInput button {
+    height: 45px;
+    padding: 0 15px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 16px;
+    background-color: #0171d3;
+    color: #fff;
+  }

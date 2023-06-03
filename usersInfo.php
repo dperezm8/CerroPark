@@ -6,7 +6,7 @@ $variableBusqueda1 = 'email';
 $variableBusqueda2 = 'first_name';
 $variableBusqueda3 = 'last_name';
 $mezclaVariable = "CONCAT(first_name, ' ', last_name)";
-include 'php/searchBar.php';
+include 'php/users/searchBar.php';
 
 
 ?>
@@ -14,56 +14,46 @@ include 'php/searchBar.php';
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/tables.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control Usuarios</title>
 </head>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
-    <h1>User Information</h1>
-
-    
+<section class="container forms">
+    <h1>Información de Usuarios</h1>
     
     <form method="POST">
-        
         <input type="text" name="searchBar" id="searchBar" placeholder="Nombre, apellido o email">
         <button type="submit">Search</button>
     </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Tipo</th>
-                <th>Control de Administrador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($users as $user): ?>
+    <div class="table-container">
+        <table>
+            <thead>
                 <tr>
-                    <td><?php echo $user['id']; ?></td>
-                    <td><?php echo $user['first_name']; ?></td>
-                    <td><?php echo $user['last_name']; ?></td>
-                    <td><?php echo $user['email']; ?></td>
-                    <td><?php if ($user['permiso'] == 1) {
-                                echo 'Usuario';
-                                } else if ($user['permiso'] == 2) {
-                                    echo 'Administrador';
-                                } else if ($user['permiso'] == 3) {
-                                    echo 'Policia';
-                                }; ?></td>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Control de Administrador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?=$user['id']?></td>
+                        <td><?=$user['first_name']?></td>
+                        <td><?=$user['last_name']?></td>
+                        <td><?=$user['email']?></td>
+                    </div>
                     <td>
                         <form method="post">
-                            <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
-                            <input type="text" name="firstName" value="<?php echo $user['first_name']; ?>">
-                            <input type="text" name="lastName" value="<?php echo $user['last_name']; ?>">
-                            <input type="text" name="email" value="<?php echo $user['email']; ?>">
+                        <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
                             <select name="permiso">
                                 <option hidden></option>
                                 <option value="1" <?php echo ($user['permiso'] == 1) ? 'selected' : ''; ?>>Usuario</option>
@@ -75,9 +65,11 @@ include 'includes/nav.php';
                         </form>
                     </td>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
 <?php
 include 'includes/footer.php';
 ?>

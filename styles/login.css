@@ -14,7 +14,7 @@
 }
 
 .form {
-    background: #FFF;
+    background-color: #CACACA;
     max-width: 430px;
     width: 100%;
     padding: 30px;
@@ -136,4 +136,10 @@ a.google span {
     font-weight: 500;
     opacity: 0.6;
     color: #232836;
+}
+
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: rgb(255, 46, 54);
 }

@@ -7,7 +7,6 @@ $emailNoValid = $passNoValid = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    $firstName = $_POST['first_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedId = hash('md5', $userId);
             $_SESSION['idUsuarioCoche'] = $row['id'];
             // se añade la id del usuario al URL
-            header("Location: index.php?userId=$hashedId");
+            header("Location: index?userId=$hashedId");
             exit();
         } else {
             $passNoValid = 'Contraseña no válida';
@@ -38,4 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $emailNoValid = 'No existe un usuario con ese correo electrónico';
     }
 }
+error_reporting(E_ALL & ~E_NOTICE);
 ?>
