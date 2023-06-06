@@ -5,7 +5,9 @@ include 'php/users/redirect.php';
 $variableBusqueda1 = 'matricula';
 $variableBusqueda2 = 'marca';
 $variableBusqueda3 = 'idUsuarioCoche';
-include 'php/coches/searchBar.php';
+$mezclaVariable = "CONCAT(marca, ' ', modelo)";
+$tabla = 'coches';
+include 'php/searchBar.php';
 
 
 ?>
@@ -17,14 +19,19 @@ include 'php/coches/searchBar.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>User Information</title>
+    <title>Información de Coches</title>
 </head>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
 <section class="container forms">
-    <h1>User Information</h1>
+    <h1>Información de Coches</h1>
+
+    <form method="POST">
+        <input type="text" name="searchBar" id="searchBar" placeholder="Marca, matricula, idUsuario">
+        <button type="submit">Search</button>
+    </form>
 
     
 

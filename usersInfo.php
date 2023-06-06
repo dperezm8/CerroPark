@@ -6,9 +6,8 @@ $variableBusqueda1 = 'email';
 $variableBusqueda2 = 'first_name';
 $variableBusqueda3 = 'last_name';
 $mezclaVariable = "CONCAT(first_name, ' ', last_name)";
-include 'php/users/searchBar.php';
-
-
+$tabla = 'users';
+include 'php/searchBar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +27,7 @@ include 'includes/nav.php';
     <h1>Información de Usuarios</h1>
     
     <form method="POST">
-        <input type="text" name="searchBar" id="searchBar" placeholder="Nombre, apellido o email">
+        <input type="text" name="searchBar" id="searchBar" placeholder="Nombre, apellido o email" value="<?php echo isset($searchBar) ? $searchBar : ''; ?>">
         <button type="submit">Search</button>
     </form>
 

@@ -46,7 +46,7 @@ include 'php/users/login.php';
                     <div class="form-link">
                         <span>Aún no tienes cuenta?<a href="register">Registrate</a></span>
                     </div>
-            </form>
+                </form>
         </div>
     </div>
 </section>

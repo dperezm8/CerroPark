@@ -1,5 +1,7 @@
 <?php
 include 'php/coches/creaTuCoche.php';
+$controlPermiso = 1;
+include 'php/users/redirect.php';
 
 ?>
 <head>

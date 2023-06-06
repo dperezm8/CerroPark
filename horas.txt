@@ -1,6 +1,6 @@
 Docu
 mock-ups - 2 hora 14 min (terminado)
-memoria - 7 horas 57 min
+memoria - 18 horas 32 min
 Usuarios
 login - 10 horas 30 min
 tabla usuarios menu admin - 1 hora 40 min
@@ -21,4 +21,4 @@ Front
 css tablas - 50 min
 index - 1 hora 15 min
 
-total - 43 horas 1 min
+total - 54 horas 36 min

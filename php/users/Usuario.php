@@ -1,7 +1,7 @@
 <?php
 require_once 'php/db.php';
 
-// Function to fetch all user records
+// Saca la informacion de todos los usuarios
 function fetchUsers()
 {
     global $conn;
@@ -16,7 +16,7 @@ function fetchUsers()
     return [];
 }
 
-// Function to update a user record
+// Actualiza el permiso de cada usuario
 function updateUser($id, $permiso)
 {
     global $conn;
@@ -36,24 +36,26 @@ function deleteUser($id)
 {
     global $conn;
 
+    //Eliminar los coches en la que la idUsuarioCoche sea igual a la id seleccionada, 
+    //es decir, la id del usuario que eliminemos
     $deleteCarsQuery = "DELETE FROM coches WHERE idUsuarioCoche = ?";
     $stmtDeleteCars = $conn->prepare($deleteCarsQuery);
     $stmtDeleteCars->bind_param("i", $id);
     $stmtDeleteCars->execute();
     $stmtDeleteCars->close();
 
-    // Delete the user
+    // Elimina al usuario
     $deleteUserQuery = "DELETE FROM users WHERE id = ?";
     $stmtDeleteUser = $conn->prepare($deleteUserQuery);
     $stmtDeleteUser->bind_param("i", $id);
 
     if ($stmtDeleteUser->execute()) {
-        // Successful deletion
-        header("Location: usersInfo.php");
+        // Si tiene exito al borrar, esto se refleja en el url
+        header("Location: usersInfo.php?Usuario_eliminado_con_exito");
         exit();
     } else {
-        // Error occurred
-        echo "Error deleting user: " . $conn->error;
+        // Si hay un error eliminando el usuario, redirigue al menu y cambia el url
+        header("Location: usersInfo.php?error_eliminando_usuario");
     }
 
     $stmtDeleteUser->close();

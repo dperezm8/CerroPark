@@ -1,7 +1,7 @@
 <?php
-include 'php/db.php';
-require_once 'Usuario.php';
+
 session_start();
+include 'php/db.php';
 
 $emailNoValid = $passNoValid = '';
 
