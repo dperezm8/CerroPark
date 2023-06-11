@@ -1,5 +1,9 @@
 <?php
 include 'php/users/login.php';
+if(isset($_SESSION['email'])) {
+$controlPermiso = $_SESSION['permiso'];
+include 'php/users/redirect.php';
+}
 ?>
 
 <html lang="en">
@@ -11,14 +15,8 @@ include 'php/users/login.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inicia Sesión</title>
-    <style>
-        
-.error-message {
-    display: block;
-    margin-top: 5px;
-    color: rgb(255, 46, 54);
-}
-    </style>
+    <link rel="icon" type="image/png" href="img/logos/logoCerroPark.png" sizes="64x64">
+    <link rel="icon" href="img/logos/logoCerroParkCirclepng" type="image/png" sizes="192x192">
 </head>
     <body>
     <?php

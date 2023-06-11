@@ -14,22 +14,25 @@ include 'php/searchBar.php';
 <head>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/tables.css">
+    <link rel="stylesheet" href="styles/box.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Control Usuarios</title>
+    <link rel="icon" type="image/png" href="img/logos/logoCerroPark.png" sizes="64x64">
+    <link rel="icon" href="img/logos/logoCerroParkCircle.png" type="image/png" sizes="192x192">
 </head>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
-<section class="container forms">
-    <h1>Información de Usuarios</h1>
+<h1>Información de Usuarios</h1>
     
     <form method="POST">
         <input type="text" name="searchBar" id="searchBar" placeholder="Nombre, apellido o email" value="<?php echo isset($searchBar) ? $searchBar : ''; ?>">
         <button type="submit">Search</button>
     </form>
+<section class="container forms">
 
     <div class="table-container">
         <table>

@@ -10,17 +10,21 @@ include 'php/users/redirect.php';
 <head>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/tables.css">
+    <link rel="stylesheet" href="styles/box.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mis Coches</title>
+    <link rel="icon" type="image/png" href="img/logos/logoCerroPark.png" sizes="64x64">
+    <link rel="icon" href="img/logos/logoCerroParkCircle.png" type="image/png" sizes="192x192">
 </head>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
-    <h1>Mis Coches</h1>
-
+<h1>Mis Coches</h1>
+<section class="container forms">
+    
     <div class="table-container">
     <table>
         <thead>
@@ -66,7 +70,8 @@ include 'includes/nav.php';
             <?php } endforeach; ?>
         </tbody>
     </table>
-                    </div>
+</div>
+</section>
 <?php
 include 'includes/footer.php';
 ?>

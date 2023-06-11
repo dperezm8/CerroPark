@@ -1,6 +1,6 @@
 Docu
 mock-ups - 2 hora 14 min (terminado)
-memoria - 18 horas 32 min
+memoria - 22 horas 03 min
 Usuarios
 login - 10 horas 30 min
 tabla usuarios menu admin - 1 hora 40 min
@@ -16,9 +16,10 @@ pagina "Mis Coches" - 40 min
 
 Misc
 adicion .htaccess (quitar '.php' de url) - 15 min
-debugeo - 1 horas 42 min
+debugeo - 4 horas 42 min
 Front
 css tablas - 50 min
 index - 1 hora 15 min
+Logo - 1 hora 10 min
 
-total - 54 horas 36 min
+total - 62 horas 17 min

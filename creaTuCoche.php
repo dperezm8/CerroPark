@@ -12,10 +12,8 @@ include 'php/users/redirect.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Añade tu Coche</title>
-    <style>
-        
-
-    </style>
+    <link rel="icon" type="image/png" href="img/logos/logoCerroPark.png" sizes="64x64">
+    <link rel="icon" href="img/logos/logoCerroParkCircle.png" type="image/png" sizes="192x192">
 </head>
     <body>
     <?php
@@ -36,7 +34,7 @@ include 'php/users/redirect.php';
                     </div>
 
                     <div class="field input-field">
-                        <input type="text" name="matricula" placeholder="Matricula" class="input" value="<?php echo isset($_POST['matricula']) ? $_POST['matricula'] : ''; ?>" minlength="7" maxlength="12" required>
+                        <input type="text" name="matricula" placeholder="Matricula" class="input" pattern="[A-Z0-9]+" value="<?php echo isset($_POST['matricula']) ? $_POST['matricula'] : ''; ?>" minlength="7" maxlength="12" required>
                         <span class="error-message"><?php echo $matriculaNoValida; ?></span><br><br>
                     </div>
                     
@@ -90,17 +88,7 @@ include 'php/users/redirect.php';
                             Añadir</button>
                     </div>
             </form>
-
-            <script>
-                function eliminaFecha(checkbox) {
-                    var cocheTemporal = document.getElementById('valorTemporal');
-                    var validoHastaField = document.getElementById('validoHasta');
-                    validoHastaField.style.display = checkbox.checked ? 'none' : 'block';
-                    validoHastaField.querySelector('input').required = !checkbox.checked;
-                    cocheTemporal.value = checkbox.checked ? '1' : '0';
-                }
-
-    </script>
+            <script src="scripts/cocheTemporal.js"></script>
             
         </div>
     </div>
