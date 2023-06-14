@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'php/db.php';
 
 $emailNoValido = $passNoValido = $passDontMatch= '';
@@ -32,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    if (mysqli_num_rows($result) > 0) {
        $emailNoValido = "Ya hay un usuario con ese email, escoja otro.";
-   }
+   } else {
+    $_SESSION['id'] = mysqli_insert_id($conn);
 
    // If there are no errors, insert the new user into the database using prepared statement
    if(empty($emailNoValido) && empty($passNoValido) && empty($passDontMatch)) {
@@ -41,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        $stmt = mysqli_prepare($conn, $insertQuery);
        mysqli_stmt_bind_param($stmt, 'ssss', $email, $hashedPassword, $firstName, $lastName);
        mysqli_stmt_execute($stmt);
+       $userId = mysqli_insert_id($conn);
+       $_SESSION['idUsuarioCoche'] = mysqli_insert_id($conn);
 
        // Redirect to index.php or any desired page
        session_start();
@@ -48,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        //se añade la id del usuario al urlsss
        header("Location: index");
        exit();
+   } else {
+    echo 'Error durante la introduccion de datos';
    }
+}
+} else {
+    echo 'Error con la base de datos, intente más tarde.';
 }
 ?>
